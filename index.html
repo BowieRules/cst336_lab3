@@ -57,7 +57,7 @@
         $("#longitude").html(data.longitude);
     }); //zip
     
-    / Displaying counties from API after selecting state
+    // Displaying counties from API after selecting state
     $("#state").on("change", async function() {
         let state = $("#state").val();
         let url = `https://itcdland.csumb.edu/~milara/ajax/countyList.php?state=${state}`;
