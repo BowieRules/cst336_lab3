@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <title> Sign Up Page </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
     <body>
-        <main>
-        <h1> Sign Up </h1>
+        <main class="container">
+        <h1 class="text-center"> Sign Up </h1>
         
         First Name:  <input type="text" name="fName"><br>
         Last Name:   <input type="text" name="lName"><br>
@@ -27,10 +29,16 @@
         </select><br> 
         Select a County: <select id="county"></select><br>
         
-        Desired Username: <input type="text" id="username" name="username"><br>
-        
-        Password: <input type="password" id="password" name="password"><br>
-        Password Again: <input type="password" id="passwordAgain">
+        <div class="form-group">
+			  <label for="username">Desired Username</label>
+	          <input type="text" class="form-control" id="username" name="username"><br>
+		      <span id="usernameError"></span><br>
+		      <label for="password">Password</label>
+	          <input type="password" class="form-control" id="password" name="password"><br>
+	          <label for="password">Password Again</label>
+	          <input type="password" class="form-control" id="passwordAgain" name="username"><br>
+			  <span id="passwordAgainError" class="text-danger"></span>
+		</div>
         
         <input type="submit" value="Sign up!">
         </main>
@@ -59,6 +67,7 @@
     
     // Displaying counties from API after selecting state
     $("#state").on("change", async function() {
+        // alert($("#state").val());
         let state = $("#state").val();
         let url = `https://itcdland.csumb.edu/~milara/ajax/countyList.php?state=${state}`;
         let response = await fetch(url);
@@ -67,7 +76,25 @@
         for (let i=0; i< data.length; i++) {
             $("#county").append(`<option> ${data[i].county} </option>`);
         }
-    }); //state    
+    }); //state
+    $("#username").on("change", async function(){
+            // alert($("#username").val());
+    		let username = $("#username").val();
+    		let url = `https://cst336.herokuapp.com/projects/api/usernamesAPI.php?username=${username}`;
+    		let response = await fetch(url);
+    		let data = await response.json();
+
+    		if (data.available) {
+    			$("#usernameError").html("Username available!");
+    			$("#usernameError").css("color","green");
+    			usernameAvailable = true;
+    		} else {
+    			$("#usernameError").html("Username not available!");
+    			$("#usernameError").css("color","red");
+    			usernameAvailable = false;
+    		}
+
+    	}); //username
 </script>
 </body>
 <!-- closing body -->
