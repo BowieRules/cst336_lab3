@@ -63,6 +63,7 @@
         let url = `https://itcdland.csumb.edu/~milara/ajax/countyList.php?state=${state}`;
         let response = await fetch(url);
         let data = await response.json();
+        $("#county").html("<option> Select One </option>");
         for (let i=0; i< data.length; i++) {
             $("#county").append(`<option> ${data[i].county} </option>`);
         }
