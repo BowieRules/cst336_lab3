@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-lg-3">
                         <label for="zip" class="col col-form-label">Zip Code:</label>
-                        <input type="text" class="form-control" id="zip" name="zip">
+                        <input type="text" class="form-control" id="zip" name="zip"> <span id="zipError" class="text-danger"></span>
                     </div>
                     </div>
                     <div class="form-group">
@@ -68,12 +68,7 @@
                 <div class="form-group row">
                     <div class="col-lg-6">
                         State:
-                        <select class="form-control" id="state" name="state">
-                            <option> Select One </option>
-                            <option value="ca"> California </option>
-                            <option value="ny"> New York </option>
-                            <option value="tx"> Texas </option>
-                        </select>
+                        <select class="form-control" id="state" name="state"></select>
                     </div>
                     <div class="col-lg-6">
                         Select a County: <select class="form-control" id="county"></select>
@@ -112,7 +107,22 @@
         <!-- closing footer -->
 <script>
     /*global fetch $ */
+    $(document).ready(function() {
+            populateStates();
+
+            async function populateStates() {
+                let url = `https://cst336.herokuapp.com/projects/api/state_abbrAPI.php`;
+                let response = await fetch(url);
+                let data = await response.json();
+                $("#state").html("<option> Select One </option>");
+                for (let i=0; i< data.length; i++) {
+                    $("#state").append(`<option value="${data[i].usps}"> ${data[i].state} </option>`);
+                }
+            }
+    }); // form load
+    
     var usernameAvailable = false;
+    var zipInvalid = false;
     // Displaying city from API after typing a zip code
     $("#zip").on("change", async function() {
         //alert($("#zip").val());
@@ -120,11 +130,26 @@
         let url = `https://itcdland.csumb.edu/~milara/ajax/cityInfoByZip.php?zip=${zipCode}`;
         let response = await fetch(url);
         let data = await response.json();
-        //console.log(data);
-        $("#city").html(data.city);
-        $("#latitude").html(data.latitude);
-        $("#longitude").html(data.longitude);
+    
+        if (data == false) {
+            $("#zipError").html("Invalid zipcode!");
+			$("#zipError").css("color","red");
+			$("#city").html("");
+            $("#latitude").html("");
+            $("#longitude").html("");
+			zipInvalid = true;
+        }
+        else {
+            $("#city").html(data.city);
+            $("#latitude").html(data.latitude);
+            $("#longitude").html(data.longitude);
+            $("#zipError").html("");
+        }
     }); //zip
+    
+    // Populate list of states
+    
+    https://cst336.herokuapp.com/projects/api/state_abbrAPI.php
     
     // Displaying counties from API after selecting state
     $("#state").on("change", async function() {
@@ -168,7 +193,7 @@
     function isFormValid() {
         
     	var isValid = true;
-		if(!usernameAvailable) {
+		if(!usernameAvailable || zipInvalid) {
 			isValid = false;
 		}
 
