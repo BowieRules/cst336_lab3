@@ -208,10 +208,16 @@
 			$("#passwordAgainError").html("Password Mismatch!");
 			isValid = false;
 		}
+		else {
+		    $("#passwordAgainError").html("");
+		}
 		//Check if password is at least 6 characters long
 		if($("#password").val().length < 6) {
 			isValid = false;
 			$("#passwordAgainError").html("Password is less than 6 characters");
+		}
+		else {
+		    $("#passwordAgainError").html("");
 		}
 		return isValid;
     }
