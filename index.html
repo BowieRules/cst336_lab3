@@ -132,7 +132,7 @@
         let data = await response.json();
     
         if (data == false) {
-            $("#zipError").html("Invalid zipcode!");
+            $("#zipError").html("Zip code not found!");
 			$("#zipError").css("color","red");
 			$("#city").html("");
             $("#latitude").html("");
