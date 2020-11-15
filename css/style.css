@@ -1,75 +1,37 @@
-body {
-    text-align: center;
-    background-color: black;
+body, html {
+  height: 100%
 }
 
-.groupColumn {
-    margin: 25px;
-    display: inline-block;
-    font-size: 20px;
-    vertical-align: top;
+.bgimg {
+  /* Background image */
+  background-image: url('https://www.w3schools.com/w3images/forestbridge.jpg');
+  /* Full-screen */
+  height: 100%;
+  /* Center the background image */
+  background-position: center;
+  /* Scale and zoom in the image */
+  background-size: cover;
+  /* Add position: relative to enable absolutely positioned elements inside the image (place text) */
+  position: relative;
+  /* Add a white text color to all elements inside the .bgimg container */
+  color: white;
+  /* Add a font */
+  font-family: "Courier New", Courier, monospace;
+  /* Set the font-size to 25 pixels */
+  font-size: 25px;
 }
 
-.results {
-    display: none;
-    margin: 5px auto;
-    background-color: white;
-    border: 2px solid black;
-    font-size: 12px;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-}
-
-.inventory {
-    display: none;
-    margin: 5px auto;
-    font-size: 12px;
-    text-align: center;
-    padding: 10px;
-    -webkit-columns: 4 150px;
-    -moz-columns: 4 150px;
-    columns: 4 150px;
-    -webkit-column-gap: 2em;
-    -moz-column-gap: 2em;
-    column-gap: 2em;
-}
-
-.mega-header {
+/* Position text in the middle */
+.middle {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 75%;
-  height: 90%;
-  background-image:
-        radial-gradient(ellipse closest-side, rgba(15, 14, 22, 0.5), #100e17),
-        url(../img/random-number-slots.png);
-  background-repeat: no-repeat;
-  opacity: 0.35;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-.thumbnail img{
-  width:30px;
-  height:30px;
-}
-
-#validation {
-	background: #FFC199; /*Change background color*/
-	border-left: 9px solid #FF6600; /*Change left border color*/
-	color: #2c3e50; /*Change text color*/
-}
-
-h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 100;
-}
-
-.space-buffer {
-margin-top:20px;
-margin-bottom:20px;
-position: relative;
-}
-
-.thisTeam {
-  background-color: lightgray;
+/* Style the <hr> element */
+hr {
+  margin: auto;
+  width: 40%;
 }

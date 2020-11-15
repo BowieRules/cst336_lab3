@@ -4,46 +4,106 @@
     <title> Sign Up Page </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-    <body>
+    <body class="bg-light">
         <main class="container">
-        <h1 class="text-center"> Sign Up </h1>
-        
-        First Name:  <input type="text" name="fName"><br>
-        Last Name:   <input type="text" name="lName"><br>
-        Gender:      <input type="radio" name="gender" value="m"> Male<br>
-                     <input type="radio" name="gender" value="e"> Female<br>
-                     
-        Zip Code:    <input type="text" id="zip" name="zip"><br>
-        City:        <span id="city"></span><br>
-        Latitude:    <span id="latitude"></span><br>
-        Longitude:   <span id="longitude"></span><br><br>
-  
-        State:
-        <select id="state" name="state">
-            <option> Select One </option>
-            <option value="ca"> California </option>
-            <option value="ny"> New York </option>
-            <option value="tx"> Texas </option>
-        </select><br> 
-        Select a County: <select id="county"></select><br>
-        
-        <div class="form-group">
-			  <label for="username">Desired Username</label>
-	          <input type="text" class="form-control" id="username" name="username"><br>
-		      <span id="usernameError"></span><br>
-		      <label for="password">Password</label>
-	          <input type="password" class="form-control" id="password" name="password"><br>
-	          <label for="password">Password Again</label>
-	          <input type="password" class="form-control" id="passwordAgain" name="username"><br>
-			  <span id="passwordAgainError" class="text-danger"></span>
-		</div>
-        
-        <input type="submit" value="Sign up!">
+            <h1 class="h1 display-2"> Sign Up </h1>
+            <form id="signupForm" action="welcome.html">
+
+                <div class="form-row form-group">
+                    <div class="col-lg-6">
+                        <label for="fName" class="col col-form-label">First Name:</label>
+                        <input type="text" class="form-control" name="fName">
+                    </div>
+                    <div class="col-lg-6">    
+                        <label for="lName" class="col col-form-label">Last Name:</label>
+                        <input type="text" class="form-control" name="lName">
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-lg-6">
+                        <label for="gender" class="col col-form-label">Gender:</label>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gender" value="m">
+                          <label class="form-check-label" for="gender">
+                            Male
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gender" value="f">
+                          <label class="form-check-label" for="gender">
+                            Female
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="zip" class="col col-form-label">Zip Code:</label>
+                        <input type="text" class="form-control" id="zip" name="zip">
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                      <div>
+                        <h6 class="my-0">City</h6>
+                        <span class="text-muted" id="city"></span>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                      <div>
+                        <h6 class="my-0">Latitude</h6>
+                        <span class="text-muted" id="latitude"></span>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                      <div>
+                        <h6 class="my-0">Longitude</h6>
+                        <span class="text-muted" id="longitude"></span>
+                      </div>
+                    </li>
+                  </ul>
+                  </div>
+                <hr class="mb-2">
+                <div class="form-group row">
+                    <div class="col-lg-6">
+                        State:
+                        <select class="form-control" id="state" name="state">
+                            <option> Select One </option>
+                            <option value="ca"> California </option>
+                            <option value="ny"> New York </option>
+                            <option value="tx"> Texas </option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        Select a County: <select class="form-control" id="county"></select>
+                    </div>
+                </div> 
+                <div class="form-group">
+    			  <label for="username">Desired Username</label>
+    	          <input type="text" class="form-control" id="username" name="username"><br>
+    		      <span id="usernameError"></span><br>
+    		      <label for="password">Password</label>
+    	          <input type="password" class="form-control" id="password" name="password"><br>
+    	          <label for="password">Password Again</label>
+    	          <input type="password" class="form-control" id="passwordAgain" name="username"><br>
+    			  <span id="passwordAgainError" class="text-danger"></span>
+    		    </div>
+		    <div class="row">
+		    	<div class="col text-center">
+		    		<input type="submit" class="btn btn-outline-success" value="Sign up!">
+		    	</div>
+		    </div>
+		    <div class="row">
+		    	<div class="col text-center">
+		    		<br>
+		    	</div>
+		    </div>
+		    
+        </form>
         </main>
         
-        <footer class="bg-dark">
+        <footer class="bg-dark text-center">
             <div><img src="img/CSUMBLogo.png" alt="CSUMB Logo" style="width: 20%"></div>
             <small class="text-muted">CST336 Internet Programming. 2020 &copy; Petrovich <br />
             <strong>Disclaimer: </strong> The information on this webpage is fictitious. It is used for academic purposes only.</small>
@@ -52,6 +112,7 @@
         <!-- closing footer -->
 <script>
     /*global fetch $ */
+    var usernameAvailable = false;
     // Displaying city from API after typing a zip code
     $("#zip").on("change", async function() {
         //alert($("#zip").val());
@@ -77,6 +138,7 @@
             $("#county").append(`<option> ${data[i].county} </option>`);
         }
     }); //state
+    
     $("#username").on("change", async function(){
             // alert($("#username").val());
     		let username = $("#username").val();
@@ -94,7 +156,40 @@
     			usernameAvailable = false;
     		}
 
-    	}); //username
+    }); //username
+    
+    $("#signupForm").on("submit", function(event) {
+    		// alert("Submitting form...");
+    		if(!isFormValid()) {
+    		 event.preventDefault();
+    	}
+    });
+    
+    function isFormValid() {
+        
+    	var isValid = true;
+		if(!usernameAvailable) {
+			isValid = false;
+		}
+
+		//Check if username is empty
+		if($("#username").val().length == 0) {
+			isValid = false;
+			$("#usernameError").html("Username is required");
+			$("#usernameError").css("color","red");
+		}
+		//Check if passwords don't match
+		if($("#password").val() != $("#passwordAgain").val()) {
+			$("#passwordAgainError").html("Password Mismatch!");
+			isValid = false;
+		}
+		//Check if password is at least 6 characters long
+		if($("#password").val().length < 6) {
+			isValid = false;
+			$("#passwordAgainError").html("Password is less than 6 characters");
+		}
+		return isValid;
+    }
 </script>
 </body>
 <!-- closing body -->
